@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import itertools
-from perturbations import perturb
-from epistasis import epistasis
+from src.perturbations import perturb
+from src.epistasis import epistasis
 
 def simple_bnets(tt):
     """Given a truth table of v3 makes a bnet that pyboolnet 

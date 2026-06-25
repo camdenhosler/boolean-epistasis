@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from attractors import find_attractors
+from src.attractors import find_attractors
 
 
 def bool_flip(b):

@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from perturbations import perturb
-from epistasis import epistasis
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from src.perturbations import perturb
+from src.epistasis import epistasis
 bnet_string = """
 v1, 1
 v2, v2
