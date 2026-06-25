@@ -19,7 +19,9 @@ def in_real_span(att_1, att_2, target_att):
     w = dict_to_nparray(target_att, np.float64)
     A = np.column_stack((u,v))
     x, _, _, _ = np.linalg.lstsq(A,w,rcond=None)
-    return np.allclose(A @ x, w)
+    distance = np.allclose(A @ x, w)
+    #print(f"  u={u}, v={v}, w={w}, x={x}, result={distance}")
+    return distance
 
 def in_activity_span(att_1, att_2, target_att):  
     u = dict_to_nparray(att_1, bool)
