@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import itertools
 from src.perturbations import perturb
 from src.epistasis import epistasis
+from src.truthtable_to_boolnet import tts_to_bnet
 
 def simple_bnets(tt):
     """Given a truth table of v3 makes a bnet that pyboolnet 
@@ -17,21 +18,12 @@ def simple_bnets(tt):
     another row and then creates an OR between the AND of the first
     and the AND of the second row."""
 
-    bool_terms = []
-
-    for indx, (v1_val,v2_val) in enumerate([(0,0),(1,0),(0,1),(1,1)]):
-        if tt[indx] == 1:
-            bool1 = "v1" if v1_val == 1 else "!v1"
-            bool2 = "v2" if v2_val == 1 else "!v2"
-            bool_terms.append(f"{bool1} & {bool2}")
+    simple_bnet = tts_to_bnet([
+                    ([0,1],[1]),
+                    ([0,1],[2]),
+                    (tt,[1,2])
+                    ])
     
-    if not bool_terms:
-        v3_val = "0"
-    else:
-        v3_val = " | ".join(bool_terms)
-
-    simple_bnet = f"v1,v1\nv2,v2\nv3,{v3_val}"
-
     return simple_bnet
 
 def main():
