@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import itertools
-import numpy as np
 
 def tt_to_bnet_layer(tt, inputs):
     """
@@ -16,8 +15,7 @@ def tt_to_bnet_layer(tt, inputs):
     1 1 f(1,1)
     """
 
-    N = len(tt)
-    n = int(np.log2(N))
+    n = int(len(tt)).bit_length() - 1
 
     bool_terms = []
     
@@ -54,6 +52,6 @@ def tts_to_bnet(list_of_tts):
     bnet = ""
 
     for var, term in enumerate(list_of_tts):
-        bnet += "v" + str(var + 1) + ", "+ tt_to_bnet_layer(term[0],term[1]) + "\n"
+        bnet += "v" + str(var + 1) + ", " + tt_to_bnet_layer(term[0],term[1]) + "\n"
         
     return bnet

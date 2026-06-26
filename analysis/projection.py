@@ -5,8 +5,8 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.perturbations import perturb
-from src.epistasis import epistasis
+from boolean_epistasis.perturbations import perturb
+from boolean_epistasis.epistasis import epistasis
 
 bnet_string = """
 v1, 1

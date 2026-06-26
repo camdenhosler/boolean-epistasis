@@ -6,9 +6,9 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import itertools
-from src.perturbations import perturb
-from src.epistasis import epistasis
-from src.truthtable_to_boolnet import tts_to_bnet
+from boolean_epistasis.perturbations import perturb
+from boolean_epistasis.epistasis import epistasis
+from boolean_epistasis.truthtable_to_boolnet import tts_to_bnet
 
 def simple_bnets(tt):
     """Given a truth table of v3 makes a bnet that pyboolnet 
