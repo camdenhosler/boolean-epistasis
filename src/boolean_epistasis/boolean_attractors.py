@@ -33,4 +33,4 @@ def find_B_attractors(bnet,initial_state):
         current_state = successor_synchronous(primes, current_state)
         step += 1
 
-    return attractor, transient, step
+    return attractor, transient

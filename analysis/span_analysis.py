@@ -6,8 +6,8 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import itertools
-from boolean_epistasis.perturbations import perturb
-from boolean_epistasis.epistasis import epistasis
+from boolean_epistasis.perturbations import bnet_perturb
+from boolean_epistasis.epistasis import in_all_span
 from boolean_epistasis.truthtable_to_boolnet import tts_to_bnet
 
 def simple_bnets(tt):
@@ -19,9 +19,9 @@ def simple_bnets(tt):
     and the AND of the second row."""
 
     simple_bnet = tts_to_bnet([
+                    ([0,1],[0]),
                     ([0,1],[1]),
-                    ([0,1],[2]),
-                    (tt,[1,2])
+                    (tt,[0,1])
                     ])
     
     return simple_bnet
@@ -56,8 +56,8 @@ def main():
         for cond in all_initial_conditions:
             
             try:
-                fs,ss,d = perturb(simple_bnets(tt),cond,"v1","v2")
-                IAS = epistasis(fs,ss,d)
+                fs,ss,d = bnet_perturb(simple_bnets(tt),cond,"v1","v2")
+                IAS = in_all_span(fs,ss,d)
                 if IAS is None:
                     continue
 
