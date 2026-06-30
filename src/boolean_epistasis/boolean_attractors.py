@@ -1,13 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 from pyboolnet.file_exchange import bnet2primes
 from pyboolnet.state_transition_graphs import successor_synchronous
 
 def state_to_key(state):
     return frozenset(state.items())
 
-def find_attractors(bnet,initial_state):
+def find_B_attractors(bnet,initial_state):
 
     primes = bnet2primes(bnet)
 

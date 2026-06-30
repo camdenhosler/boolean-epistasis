@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-from .attractors import find_attractors
+from .boolean_attractors import find_B_attractors
 
 
 def bool_flip(b):
@@ -16,10 +13,10 @@ def perturb(bnet, initial_state, node1, node2):
     double = {**first_single, node2: bool_flip(first_single[node2])}
 
     #the attractors for the single perturbations
-    fs_attractor, _, _ = find_attractors(bnet, first_single)
-    ss_attractor, _, _ = find_attractors(bnet, second_single)
+    fs_attractor, _, _ = find_B_attractors(bnet, first_single)
+    ss_attractor, _, _ = find_B_attractors(bnet, second_single)
 
     #attractor for double
-    d_attractor, _, _  = find_attractors(bnet, double)
+    d_attractor, _, _  = find_B_attractors(bnet, double)
 
     return fs_attractor, ss_attractor, d_attractor

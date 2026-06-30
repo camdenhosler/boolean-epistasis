@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 import itertools
 
 def tt_to_bnet_layer(tt, inputs):
@@ -24,7 +21,7 @@ def tt_to_bnet_layer(tt, inputs):
             row_bools = []
 
             for colm_idx in range(n):
-                term = f"v{inputs[colm_idx]}" if v_vec[colm_idx] == 1 else f"!v{inputs[colm_idx]}"
+                term = f"v{inputs[colm_idx]+1}" if v_vec[colm_idx] == 1 else f"!v{inputs[colm_idx]+1}"
                 row_bools.append(term)
 
             and_string = " & ".join(row_bools)
