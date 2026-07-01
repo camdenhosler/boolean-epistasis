@@ -73,9 +73,7 @@ def real_projection(att1:ndarray,att2:ndarray,target_att:ndarray):
     x, _, _, _ = np.linalg.lstsq(A,target_att,rcond=None)
     return 2
 
-def bnet_span(att_1:ndarray, att_2:ndarray, target_att:ndarray):  
-
-    #the below are numpy boolean functions which differ in notation from pybool's
+def bnet_projection(att_1:ndarray, att_2:ndarray, target_att:ndarray):  
     one_mask = att_1 & att_2
     zero_mask = ~(att_1 | att_2)
     any_mask = att_1 ^ att_2

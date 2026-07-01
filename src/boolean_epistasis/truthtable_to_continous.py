@@ -1,4 +1,3 @@
-import sympy as sp
 import networkx as nx
 
 def tt_to_coefs(tt):
@@ -76,7 +75,7 @@ def hill_cube(G,current_node,global_symbols,k=0.3,n=20):
 
     return sum(hillpoly_terms)
 
-def normalized_hill_cube(G,current_node,global_symbols,k=0.3,n=20):
+def normalized_hill_cube(G,current_node,global_symbols,k=0.3,n=3):
     #make k and n lists eventually
     tt = G.nodes[current_node]['truth_table']
     inputs = G.nodes[current_node]['inputs']
