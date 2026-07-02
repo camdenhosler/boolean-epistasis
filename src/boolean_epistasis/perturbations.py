@@ -37,13 +37,13 @@ def cont_perturb(G, initial_state, interaction_fn, node1, node2):
     node2 is the index of node2
     """
     #the two single perturbations
-    first_single = initial_state
-    second_single = initial_state
+    first_single = list(initial_state)
+    second_single = list(initial_state)
     first_single[node1] = bool_flip(initial_state[node1])
     second_single[node2] = bool_flip(initial_state[node2])
 
     #the double perturbation, could be done with second_single as well
-    double = first_single
+    double = list(first_single)
     double[node2] = bool_flip(first_single[node2])
 
     #the attractors for the single perturbations

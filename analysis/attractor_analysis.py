@@ -5,25 +5,29 @@ import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from boolean_epistasis.truthtable_to_continous import normalized_hill_cube, hill_cube, bool_cube, make_graph
+import boolean_epistasis.truthtable_to_continuous as tc
 from boolean_epistasis.continous_attractors import find_C_attractors
 
 import sympy as sp
 from functools import partial
 
+list_of_tts = [
+    ([0,1],[0]),
+    ([1,1,1,1,1,0,1,0],[0,1,2]),
+    ([1,1,1,1,1,0,1,1],[0,1,2])]
 # list_of_tts = [
 #     ([0,1],[0]),
-#     ([0,0,1,0],[0,1]),
-#     ([1,0,1,1],[0,1])]
-list_of_tts = [
-     ([0,1],[0]),
-     ([0,1],[1]),
-     ([1,0,0,0],[0,1])]
+#     ([1,1,1,1,1,0,1,0],[0,1,2]),
+#     ([1,1,1,1,0,0,1,1],[0,1,2])]
+# list_of_tts = [
+#      ([0,1],[0]),
+#      ([0,1],[1]),
+#      ([1,0,0,0],[0,1])]
 
 
-G = make_graph(list_of_tts)
+G = tc.make_graph(list_of_tts)
 
-interaction = partial(bool_cube)
+interaction = partial(tc.bool_cube)
 final_state, equations = find_C_attractors(G, [1,1,1], interaction)
 
 print("Generated SymPy Equations:")

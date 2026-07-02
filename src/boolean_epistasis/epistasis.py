@@ -70,8 +70,13 @@ def in_all_span(fs_attractor,ss_attractor,d_attractor):
 
 def real_projection(att1:ndarray,att2:ndarray,target_att:ndarray):
     A = np.column_stack((att1,att2))
-    x, _, _, _ = np.linalg.lstsq(A,target_att,rcond=None)
-    return 2
+    #calculate moore penrose pseudo inverse
+    #add tests for this
+    A_pinv = np.linalg.pinv(A)
+    Proj_target = A @ A_pinv @ target_att
+
+    Proj_distance = np.linalg.norm(target_att - Proj_target)
+    return Proj_distance
 
 def bnet_projection(att_1:ndarray, att_2:ndarray, target_att:ndarray):  
     one_mask = att_1 & att_2
